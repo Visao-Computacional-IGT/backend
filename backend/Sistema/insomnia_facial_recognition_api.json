@@ -1,0 +1,220 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-06-28T12:00:00.000Z",
+  "__export_source": "manus-ai",
+  "resources": [
+    {
+      "_id": "wrk_1",
+      "parentId": null,
+      "modified": 1687950000000,
+      "created": 1687950000000,
+      "name": "Facial Recognition API",
+      "description": "API para controle de presença com reconhecimento facial",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_1",
+      "parentId": "wrk_1",
+      "modified": 1687950000000,
+      "created": 1687950000000,
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8000/api",
+        "token": ""
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url",
+          "token"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1687950000000,
+      "_type": "environment"
+    },
+    {
+      "_id": "req_login",
+      "parentId": "wrk_1",
+      "modified": 1687950000000,
+      "created": 1687950000000,
+      "url": "{{ _.base_url }}/auth/login",
+      "name": "Login",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"admin@exemplo.com\",\n\t\"password\": \"senha123\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1687950000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_me",
+      "parentId": "wrk_1",
+      "modified": 1687950000000,
+      "created": 1687950000000,
+      "url": "{{ _.base_url }}/auth/me",
+      "name": "Dados do Usuário",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1687940000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_list_alunos",
+      "parentId": "wrk_1",
+      "modified": 1687950000000,
+      "created": 1687950000000,
+      "url": "{{ _.base_url }}/alunos",
+      "name": "Listar Alunos",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1687930000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_create_aluno",
+      "parentId": "wrk_1",
+      "modified": 1687950000000,
+      "created": 1687950000000,
+      "url": "{{ _.base_url }}/alunos",
+      "name": "Cadastrar Aluno",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"nome_completo\": \"João Silva\",\n\t\"data_nascimento\": \"2015-05-20\",\n\t\"nome_responsavel\": \"Maria Silva\",\n\t\"turma_id\": 1,\n\t\"turno\": \"MANHÃ\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1687920000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_facial_presence",
+      "parentId": "wrk_1",
+      "modified": 1687950000000,
+      "created": 1687950000000,
+      "url": "{{ _.base_url }}/rekognition/facial-presence",
+      "name": "Presença Facial",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"face_id\": \"uuid-do-rekognition-aqui\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1687910000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_dashboard",
+      "parentId": "wrk_1",
+      "modified": 1687950000000,
+      "created": 1687950000000,
+      "url": "{{ _.base_url }}/dashboard/beneficios",
+      "name": "Dashboard Benefícios",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ _.token }}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1687900000000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    }
+  ]
+}
